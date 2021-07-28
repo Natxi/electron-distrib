@@ -1,0 +1,94 @@
+<!-- #docregion multi -->
+<!--<mat-accordion multi class="example-headers-align">-->
+<!--  &lt;!&ndash; #enddocregion multi &ndash;&gt;-->
+<!--  <mat-expansion-panel hideToggle>-->
+<!--    <mat-expansion-panel-header>-->
+<!--      <mat-panel-title>-->
+<!--        Personal data-->
+<!--      </mat-panel-title>-->
+<!--      <mat-panel-description>-->
+<!--        Type your name and age-->
+<!--        <mat-icon>account_circle</mat-icon>-->
+<!--      </mat-panel-description>-->
+<!--    </mat-expansion-panel-header>-->
+
+<!--    <mat-list role="list">-->
+<!--      <mat-list-item role="listitem">Item 1</mat-list-item>-->
+<!--      <mat-list-item role="listitem">Item 2</mat-list-item>-->
+<!--      <mat-list-item role="listitem">Item 3</mat-list-item>-->
+<!--    </mat-list>-->
+
+<!--  </mat-expansion-panel>-->
+<!--  &lt;!&ndash; #docregion disabled &ndash;&gt;-->
+<!--  <mat-expansion-panel hideToggle>-->
+<!--    &lt;!&ndash; #enddocregion disabled &ndash;&gt;-->
+<!--    <mat-expansion-panel-header>-->
+<!--      <mat-panel-title>-->
+<!--        Destination-->
+<!--      </mat-panel-title>-->
+<!--      <mat-panel-description>-->
+<!--        Type the country name-->
+<!--        <mat-icon>map</mat-icon>-->
+<!--      </mat-panel-description>-->
+<!--    </mat-expansion-panel-header>-->
+
+<!--    <mat-list role="list">-->
+<!--      <mat-list-item role="listitem">Item 1</mat-list-item>-->
+<!--      <mat-list-item role="listitem">Item 2</mat-list-item>-->
+<!--      <mat-list-item role="listitem">Item 3</mat-list-item>-->
+<!--    </mat-list>-->
+<!--  </mat-expansion-panel>-->
+
+<!--  <mat-expansion-panel hideToggle>-->
+<!--    <mat-expansion-panel-header>-->
+<!--      <mat-panel-title>-->
+<!--        Day of the trip-->
+<!--      </mat-panel-title>-->
+<!--      <mat-panel-description>-->
+<!--        Inform the date you wish to travel-->
+<!--        <mat-icon>date_range</mat-icon>-->
+<!--      </mat-panel-description>-->
+<!--    </mat-expansion-panel-header>-->
+
+<!--    <mat-list role="list">-->
+<!--      <mat-list-item role="listitem">Item 1</mat-list-item>-->
+<!--      <mat-list-item role="listitem">Item 2</mat-list-item>-->
+<!--      <mat-list-item role="listitem">Item 3</mat-list-item>-->
+<!--    </mat-list>-->
+<!--  </mat-expansion-panel>-->
+<!--</mat-accordion>-->
+
+<form [formGroup]="tcpFormGroup">
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Send TCP</mat-label>
+      <input matInput placeholder="cmd" formControlName="cmd">
+    </mat-form-field>
+
+  </div>
+  <div>
+    <button mat-raised-button color="primary" (click)="sendTCP()">
+      <mat-label>SEND TCP</mat-label>
+    </button>
+  </div>
+</form>
+<form [formGroup]="udpFormGroup">
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Send UDP</mat-label>
+      <input matInput placeholder="cmd" formControlName="cmd">
+    </mat-form-field>
+
+  </div>
+  <div>
+<!--    'A56C1500A3FF0100000000000000000094046103AE'-->
+    <button mat-raised-button color="primary" (click)="sendUDP()">
+      <mat-label>SEND UDP</mat-label>
+    </button>
+  </div>
+</form>
+<!--<button (click)="sendUDP()">Send UDP</button>-->
+<!--<button (click)="sendTCP()">Send TCP</button>-->
+<button (click)="addNewConfig()">Add</button>
+<button (click)="retrieve()">get</button>
+<button (click)="getJSONData()">get JSON data</button>
