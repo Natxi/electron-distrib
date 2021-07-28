@@ -8,7 +8,7 @@ export function start() {
 
   const config = [
     //mixer ip
-    {name: 'mixer', ip: '192.168.9.51', port: 0},
+    {name: 'mixer', ip: '192.168.9.51', port: 10023},
     //matrix ip
     {name: 'matrix', ip: '192.168.9.52', port: 7000},
     // vcf ip

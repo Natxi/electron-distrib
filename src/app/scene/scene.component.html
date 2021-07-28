@@ -87,6 +87,21 @@
     </button>
   </div>
 </form>
+<form [formGroup]="ipFormGroup">
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Call ip</mat-label>
+      <input matInput placeholder="cmd" formControlName="cmd">
+    </mat-form-field>
+
+  </div>
+  <div>
+<!--    'A56C1500A3FF0100000000000000000094046103AE'-->
+    <button mat-raised-button color="primary" (click)="call()">
+      <mat-label>CALL</mat-label>
+    </button>
+  </div>
+</form>
 <!--<button (click)="sendUDP()">Send UDP</button>-->
 <!--<button (click)="sendTCP()">Send TCP</button>-->
 <button (click)="addNewConfig()">Add</button>
