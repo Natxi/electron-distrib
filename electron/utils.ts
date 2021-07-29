@@ -41,3 +41,76 @@ export enum VCFCommands {
   CONTENT = 'A10602EC13B748FF'
 }
 
+export interface IVCFKeyPosition {
+  x: number;
+  y: number;
+  special: boolean;
+}
+
+export interface IVCFKey {
+  name: string;
+  position: IVCFKeyPosition;
+}
+
+export const VCFkeyboard: IVCFKey[] = [
+  {name: '1', position: {x: 0, y: 0, special: false}},
+  {name: 'a', position: {x: 3, y: 0, special: false}},
+  {name: 'b', position: {x: 4, y: 0, special: false}},
+  {name: 'c', position: {x: 5, y: 0, special: false}},
+  {name: 'd', position: {x: 6, y: 0, special: false}},
+  {name: 'e', position: {x: 7, y: 0, special: false}},
+  {name: 'f', position: {x: 8, y: 0, special: false}},
+  {name: 'g', position: {x: 9, y: 0, special: false}},
+  {name: 'h', position: {x: 3, y: 1, special: false}},
+  {name: 'i', position: {x: 4, y: 1, special: false}},
+  {name: 'j', position: {x: 5, y: 1, special: false}},
+  {name: 'k', position: {x: 6, y: 1, special: false}},
+  {name: 'l', position: {x: 7, y: 1, special: false}},
+  {name: 'm', position: {x: 8, y: 1, special: false}},
+  {name: 'n', position: {x: 9, y: 1, special: false}},
+  {name: 'o', position: {x: 3, y: 2, special: false}},
+  {name: 'p', position: {x: 4, y: 2, special: false}},
+  {name: 'q', position: {x: 5, y: 2, special: false}},
+  {name: 'r', position: {x: 6, y: 2, special: false}},
+  {name: 's', position: {x: 7, y: 2, special: false}},
+  {name: 't', position: {x: 8, y: 2, special: false}},
+  {name: 'u', position: {x: 9, y: 2, special: false}},
+  {name: ';', position: {x: 11, y: 2, special: false}},
+  {name: 'v', position: {x: 3, y: 3, special: false}},
+  {name: 'w', position: {x: 4, y: 3, special: false}},
+  {name: 'x', position: {x: 5, y: 3, special: false}},
+  {name: 'y', position: {x: 6, y: 3, special: false}},
+  {name: 'z', position: {x: 7, y: 3, special: false}},
+  {name: 'abc', position: {x: 2, y: 3, special: true}},
+  {name: ':', position: {x: 4, y: 2, special: true}},
+]
+
+export const VCFkeyboard2 = {
+  'a' : {x: 0, y: 0, special: false},
+  'b' : {x: 0, y: 1, special: false},
+  'c' : {x: 0, y: 2, special: false},
+  'd' : {x: 0, y: 3, special: false},
+  'e' : {x: 0, y: 4, special: false},
+  'f' : {x: 0, y: 5, special: false},
+  'g' : {x: 0, y: 6, special: false},
+  'h' : {x: 1, y: 0, special: false},
+  'i' : {x: 1, y: 1, special: false},
+  'j' : {x: 1, y: 2, special: false},
+  'k' : {x: 1, y: 3, special: false},
+  'l': {x: 1, y: 4, special: false},
+  'm' : {x: 1, y: 5, special: false},
+  'n' : {x: 1, y: 6, special: false},
+  'o' : {x: 2, y: 0, special: false},
+  'p' : {x: 2, y: 1, special: false},
+  'q' : {x: 2, y: 2, special: false},
+  'r' : {x: 2, y: 3, special: false},
+  's' : {x: 2, y: 4, special: false},
+  't' : {x: 2, y: 5, special: false},
+  'u' : {x: 2, y: 6, special: false},
+  'v' : {x: 3, y: 0, special: false},
+  'w' : {x: 3, y: 1, special: false},
+  'x' : {x: 3, y: 2, special: false},
+  'y' : {x: 3, y: 3, special: false},
+  'z' : {x: 3, y: 4, special: false},
+  ':' : {x: 2, y: 8, special: false},
+}

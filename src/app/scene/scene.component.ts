@@ -7,6 +7,9 @@ import {MongodbService} from "./mongodb.service";
 import {JsondbService} from "./jsondb.service";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {VideoConferenceService} from "./video-conference.service";
+import {timeout} from "rxjs/operators";
+import {timer} from "rxjs";
 
 export interface TestDB  {
   name: string;
@@ -30,12 +33,15 @@ export class SceneComponent implements OnInit {
   private config: Config[] = [];
   tcpFormGroup: FormGroup = new FormGroup({});
   udpFormGroup: FormGroup = new FormGroup({});
+  ipFormGroup: FormGroup = new FormGroup({});
   constructor(
     private _udp: UpdService,
     private _db: MongodbService,
     private _jsondb: JsondbService,
     private _formBuilder: FormBuilder,
     private _snackBar: MatSnackBar
+    private _formBuilder: FormBuilder,
+    private videoConferenceService: VideoConferenceService
   ) { }
 
   ngOnInit(): void {
@@ -43,6 +49,9 @@ export class SceneComponent implements OnInit {
       cmd: [''],
     });
     this.udpFormGroup = this._formBuilder.group({
+      cmd: [''],
+    });
+    this.ipFormGroup = this._formBuilder.group({
       cmd: [''],
     });
     this._jsondb.getData().subscribe((result) => {
@@ -82,7 +91,7 @@ export class SceneComponent implements OnInit {
   }
 
   sendUDP() {
-    const multiViewerConfig = this.config.find(config => config.name === 'multiviewer');
+    const multiViewerConfig = this.config.find(config => config.name === 'mixer');
     if (multiViewerConfig) {
       this._udp.sendUdpObservable(multiViewerConfig.ip, multiViewerConfig.port, this.udpFormGroup.controls['cmd'].value)
         .subscribe((next => {
@@ -249,5 +258,17 @@ export class SceneComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action)
+  }
+  call() {
+    console.log('Calling to ' + this.ipFormGroup.controls['cmd'].value);
+    const commands = this.videoConferenceService.getVideoConferenceCommandsFromDest(this.ipFormGroup.controls['cmd'].value);
+    console.log(commands);
+    let time = 1000;
+    commands.forEach(command => {
+      setTimeout(() => {
+          this._udp.sendTcpCommand(command);
+      }, time);
+      time += 500;
+    })
   }
 }
