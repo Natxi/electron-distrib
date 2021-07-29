@@ -39,8 +39,7 @@ export class SceneComponent implements OnInit {
     private _db: MongodbService,
     private _jsondb: JsondbService,
     private _formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar
-    private _formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar,
     private videoConferenceService: VideoConferenceService
   ) { }
 
