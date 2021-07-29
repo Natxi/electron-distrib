@@ -30,9 +30,9 @@ export class UpdService {
   sendUdpObservable(ip: string, port: number, cmd: string): Observable<any> {
     const sub = new Subject();
     if(this._electronService.isElectronApp) {
-      console.log('isElectronApp');
+      // console.log('isElectronApp');
       const result = this._electronService.ipcRenderer.sendSync('UDPSEND', {address: ip, port: port, cmd: cmd});
-      console.log('result', result);
+      // console.log('result', result);
       this._electronService.ipcRenderer.on('UDPRECEIVED', (event, arg) => {
         sub.next(arg);
         sub.complete();
@@ -75,5 +75,16 @@ export class UpdService {
       });
     }
     return sub as Observable<any>;
+  }
+
+
+  test(): string {
+    // const sub = new Subject();
+    if(this._electronService.isElectronApp) {
+      const result = this._electronService.ipcRenderer.sendSync('UDPTEST', 'test') as Observable<any>;
+      console.log('result', result);
+      result.subscribe(next => console.log('next', next), error => console.log('error', error), () => console.log('complete'))
+    }
+    return '';
   }
 }

@@ -1,0 +1,15 @@
+<mat-expansion-panel (opened)="setPanelState(true)"
+                     (closed)="setPanelState(false)">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <mat-icon [ngStyle]="{'color': color}">{{icon}}</mat-icon>
+    </mat-panel-title>
+<!--    [ngStyle]="{'color': isPanelOpen() ? 'cornflowerblue': 'black'}"-->
+    <mat-panel-description>
+      {{description}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <app-audio-options></app-audio-options>
+
+</mat-expansion-panel>

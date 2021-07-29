@@ -1,22 +1,36 @@
 <!-- #docregion multi -->
-<!--<mat-accordion multi class="example-headers-align">-->
-<!--  &lt;!&ndash; #enddocregion multi &ndash;&gt;-->
+<mat-card>
+  <mat-checkbox class="example-margin">Activar gravación Xuíz</mat-checkbox>
+</mat-card>
+<mat-accordion class="example-headers-align">
+  <!-- #enddocregion multi -->
+  <app-scene-option [description]="'Vista normal'" [icon]="'gavel'" [color]="'green'"></app-scene-option>
+  <app-scene-option [description]="'Vista probas LAX'" [icon]="'business_center'" [color]="'green'"></app-scene-option>
+  <app-scene-option [description]="'Vista probas XUÍZ'" [icon]="'business_center'" [color]="'green'"></app-scene-option>
+  <app-scene-option [description]="'VCF normal'" [icon]="'person'"></app-scene-option>
+  <app-scene-option [description]="'VCF + probas LAX'" [icon]="'group_add'"></app-scene-option>
+  <app-scene-option [description]="'VCF + probas XUÍZ'" [icon]="'group_add'"></app-scene-option>
+  <app-scene-option [description]="'VCF + probas físicas'" [icon]="'group_add'"></app-scene-option>
+  <app-scene-option [description]="'Exhorto'" [icon]="'group'" [color]="'yellow'"></app-scene-option>
+  <app-scene-option [description]="'Presentación'" [icon]="'smart_display'"></app-scene-option>
+</mat-accordion>
+<button (click)="setScene1()">Set Scene 1</button>
+<button (click)="setScene2()">Set Scene 2</button>
+<button (click)="setScene3()">Set Scene 3</button>
+<button (click)="setScene4()">Set Scene 4</button>
+<button (click)="setScene5()">Set Scene 2</button>
 <!--  <mat-expansion-panel hideToggle>-->
 <!--    <mat-expansion-panel-header>-->
 <!--      <mat-panel-title>-->
-<!--        Personal data-->
+<!--        <mat-icon>gavel</mat-icon>-->
 <!--      </mat-panel-title>-->
 <!--      <mat-panel-description>-->
-<!--        Type your name and age-->
-<!--        <mat-icon>account_circle</mat-icon>-->
+
+<!--        <mat-icon>expand_more</mat-icon>-->
 <!--      </mat-panel-description>-->
 <!--    </mat-expansion-panel-header>-->
 
-<!--    <mat-list role="list">-->
-<!--      <mat-list-item role="listitem">Item 1</mat-list-item>-->
-<!--      <mat-list-item role="listitem">Item 2</mat-list-item>-->
-<!--      <mat-list-item role="listitem">Item 3</mat-list-item>-->
-<!--    </mat-list>-->
+<!--    <app-audio-options></app-audio-options>-->
 
 <!--  </mat-expansion-panel>-->
 <!--  &lt;!&ndash; #docregion disabled &ndash;&gt;-->
@@ -27,16 +41,12 @@
 <!--        Destination-->
 <!--      </mat-panel-title>-->
 <!--      <mat-panel-description>-->
-<!--        Type the country name-->
-<!--        <mat-icon>map</mat-icon>-->
+<!--        Ver probas LAX-->
+<!--        <mat-icon>expand_more</mat-icon>-->
 <!--      </mat-panel-description>-->
 <!--    </mat-expansion-panel-header>-->
 
-<!--    <mat-list role="list">-->
-<!--      <mat-list-item role="listitem">Item 1</mat-list-item>-->
-<!--      <mat-list-item role="listitem">Item 2</mat-list-item>-->
-<!--      <mat-list-item role="listitem">Item 3</mat-list-item>-->
-<!--    </mat-list>-->
+<!--    <app-audio-options></app-audio-options>-->
 <!--  </mat-expansion-panel>-->
 
 <!--  <mat-expansion-panel hideToggle>-->
@@ -45,50 +55,46 @@
 <!--        Day of the trip-->
 <!--      </mat-panel-title>-->
 <!--      <mat-panel-description>-->
-<!--        Inform the date you wish to travel-->
-<!--        <mat-icon>date_range</mat-icon>-->
+<!--        Ver probas XUÍZ-->
+<!--        <mat-icon>expand_more</mat-icon>-->
 <!--      </mat-panel-description>-->
 <!--    </mat-expansion-panel-header>-->
 
-<!--    <mat-list role="list">-->
-<!--      <mat-list-item role="listitem">Item 1</mat-list-item>-->
-<!--      <mat-list-item role="listitem">Item 2</mat-list-item>-->
-<!--      <mat-list-item role="listitem">Item 3</mat-list-item>-->
-<!--    </mat-list>-->
+<!--    <app-audio-options></app-audio-options>-->
 <!--  </mat-expansion-panel>-->
 <!--</mat-accordion>-->
 
-<form [formGroup]="tcpFormGroup">
-  <div>
-    <mat-form-field appearance="outline">
-      <mat-label>Send TCP</mat-label>
-      <input matInput placeholder="cmd" formControlName="cmd">
-    </mat-form-field>
+<!--<form [formGroup]="tcpFormGroup">-->
+<!--  <div>-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Send TCP</mat-label>-->
+<!--      <input matInput placeholder="cmd" formControlName="cmd">-->
+<!--    </mat-form-field>-->
 
-  </div>
-  <div>
-    <button mat-raised-button color="primary" (click)="sendTCP()">
-      <mat-label>SEND TCP</mat-label>
-    </button>
-  </div>
-</form>
-<form [formGroup]="udpFormGroup">
-  <div>
-    <mat-form-field appearance="outline">
-      <mat-label>Send UDP</mat-label>
-      <input matInput placeholder="cmd" formControlName="cmd">
-    </mat-form-field>
+<!--  </div>-->
+<!--  <div>-->
+<!--    <button mat-raised-button color="primary" (click)="sendTCP()">-->
+<!--      <mat-label>SEND TCP</mat-label>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--</form>-->
+<!--<form [formGroup]="udpFormGroup">-->
+<!--  <div>-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Send UDP</mat-label>-->
+<!--      <input matInput placeholder="cmd" formControlName="cmd">-->
+<!--    </mat-form-field>-->
 
-  </div>
-  <div>
-<!--    'A56C1500A3FF0100000000000000000094046103AE'-->
-    <button mat-raised-button color="primary" (click)="sendUDP()">
-      <mat-label>SEND UDP</mat-label>
-    </button>
-  </div>
-</form>
-<!--<button (click)="sendUDP()">Send UDP</button>-->
-<!--<button (click)="sendTCP()">Send TCP</button>-->
-<button (click)="addNewConfig()">Add</button>
-<button (click)="retrieve()">get</button>
-<button (click)="getJSONData()">get JSON data</button>
+<!--  </div>-->
+<!--  <div>-->
+<!--&lt;!&ndash;    'A56C1500A3FF0100000000000000000094046103AE'&ndash;&gt;-->
+<!--    <button mat-raised-button color="primary" (click)="sendUDP()">-->
+<!--      <mat-label>SEND UDP</mat-label>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--</form>-->
+<!--&lt;!&ndash;<button (click)="sendUDP()">Send UDP</button>&ndash;&gt;-->
+<!--&lt;!&ndash;<button (click)="sendTCP()">Send TCP</button>&ndash;&gt;-->
+<!--<button (click)="addNewConfig()">Add</button>-->
+<!--<button (click)="retrieve()">get</button>-->
+<!--<button (click)="getJSONData()">get JSON data</button>-->

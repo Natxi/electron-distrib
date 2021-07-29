@@ -2,6 +2,7 @@ import * as dgram from 'dgram';
 import * as Electron from 'electron';
 import {BrowserWindow} from "electron";
 import { Buffer } from 'buffer';
+import {Observable, Subject, timer} from "rxjs";
 
 export interface IpPort {
   address: string,
@@ -78,6 +79,30 @@ export class UDPClient {
       });
 
       event.returnValue = 'yeees';
+    });
+
+    function getUdpData() {
+
+    }
+    Electron.ipcMain.on('UDPTEST', (event, arg) => {
+      // const ipPort = arg as {address: string,
+      //   port: number, cmd: string};
+      // const hex_string = ipPort.cmd;
+      // const bytes = this.hexStringToByteArray(hex_string);
+      // const message = Buffer.from(bytes);
+
+
+      const sub = new Subject();
+      timer(2000).subscribe(
+        next => console.log('next subject after 2 secs'),
+        error => console.log('error on UDPTEST', error),
+        () => {
+          sub.next('wtf');
+          sub.complete();
+          // event.returnValue = 'end after two seconds';
+        });
+      event.reply('getUdpData')
+      event.returnValue = sub as Observable<any>;
     });
 
     Electron.ipcMain.on('UDPSEND', (event, arg) => {
